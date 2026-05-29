@@ -11,8 +11,52 @@ Resumo para iniciantes:
 
 import os
 import datetime
+import re
 import pandas as pd
 import pdfplumber
+
+
+REGEX_CHAVE_NFE = re.compile(r"(?<!\d)\d{44}(?!\d)")
+MARCADORES_BOLETO = ("_bol_", "boleto", "_cobranca_", "_cobrança_")
+
+
+def selecionar_pdf_nota_fiscal(arquivos_pdf):
+    """Seleciona o PDF mais provável de Nota Fiscal dentro de uma pasta de cliente.
+
+    Estratégia:
+    1. Prioriza arquivos com chave de acesso NF-e (44 dígitos) no nome.
+    2. Exclui arquivos claramente identificados como boleto.
+    3. Como fallback, usa o primeiro PDF em ordem alfabética que não seja boleto.
+
+    Args:
+        arquivos_pdf (list[str]): Lista de nomes de arquivos PDF.
+
+    Returns:
+        str | None: Nome do arquivo PDF selecionado, ou None se não houver candidato.
+    """
+    if not arquivos_pdf:
+        return None
+
+    pdfs_ordenados = sorted(arquivos_pdf, key=str.lower)
+
+    def eh_boleto(nome_arquivo):
+        nome = os.path.splitext(nome_arquivo)[0].lower()
+        return any(marcador in nome for marcador in MARCADORES_BOLETO)
+
+    # 1) Melhor caso: nome contém a chave de acesso da NF-e.
+    candidatos_chave_nfe = [
+        arq for arq in pdfs_ordenados if REGEX_CHAVE_NFE.search(os.path.splitext(arq)[0])
+    ]
+    if candidatos_chave_nfe:
+        return candidatos_chave_nfe[0]
+
+    # 2) Fallback seguro: qualquer PDF que não pareça boleto.
+    candidatos_nao_boleto = [arq for arq in pdfs_ordenados if not eh_boleto(arq)]
+    if candidatos_nao_boleto:
+        return candidatos_nao_boleto[0]
+
+    # 3) Último fallback: mantém comportamento antigo, porém determinístico.
+    return pdfs_ordenados[0]
 
 
 def extrair_dados_pdf(caminho_pdf):
@@ -170,8 +214,12 @@ def main():
             pdfs = [arq for arq in arquivos_cliente if arq.lower().endswith(".pdf")]
 
             if pdfs:
-                # Usa o primeiro PDF encontrado na pasta do cliente.
-                nome_pdf = pdfs[0]
+                nome_pdf = selecionar_pdf_nota_fiscal(pdfs)
+                if not nome_pdf:
+                    print("    ⚠ Nenhum PDF válido para Nota Fiscal foi encontrado.")
+                    print("-" * 60)
+                    continue
+
                 caminho_completo_pdf = os.path.join(caminho_cliente, nome_pdf)
                 print(f"    📄 Lendo Nota Fiscal: {nome_pdf}")
 
