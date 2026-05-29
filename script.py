@@ -18,6 +18,8 @@ import pdfplumber
 
 REGEX_CHAVE_NFE = re.compile(r"(?<!\d)\d{44}(?!\d)")
 MARCADORES_BOLETO = ("_bol_", "boleto", "_cobranca_", "_cobrança_")
+PADRAO_CODIGO_PRODUTO = re.compile(r"^[A-Z0-9][A-Z0-9./_-]{2,29}$", re.IGNORECASE)
+PADRAO_CNPJ_MASCARADO = re.compile(r"^[A-Z]?\d{2,3}\.\d{3}/\d{4}-\d{2}$", re.IGNORECASE)
 
 
 def selecionar_pdf_nota_fiscal(arquivos_pdf):
@@ -59,22 +61,48 @@ def selecionar_pdf_nota_fiscal(arquivos_pdf):
     return pdfs_ordenados[0]
 
 
+def extrair_chave_nfe(nome_arquivo):
+    """Extrai chave NF-e (44 dígitos) do nome de arquivo."""
+    base = os.path.splitext(nome_arquivo)[0]
+    match = REGEX_CHAVE_NFE.search(base)
+    return match.group(0) if match else None
+
+
+def extrair_numero_nota_nome_arquivo(nome_arquivo):
+    """Extrai número da nota do nome do arquivo por padrões conhecidos."""
+    base = os.path.splitext(nome_arquivo)[0]
+    match_doc = re.search(r"doc_(\d+)", base, re.IGNORECASE)
+    if match_doc:
+        return str(int(match_doc.group(1)))
+
+    chave = extrair_chave_nfe(nome_arquivo)
+    if chave:
+        numero_chave = chave[25:34]
+        try:
+            return str(int(numero_chave))
+        except ValueError:
+            return numero_chave
+
+    return None
+
+
 def extrair_dados_pdf(caminho_pdf):
-    """Extrai códigos de produto a partir de tabelas de um PDF de nota fiscal.
+    """Extrai itens da tabela de produtos diretamente do PDF da NF.
 
     Args:
         caminho_pdf (str): Caminho completo do arquivo PDF da nota fiscal.
 
     Returns:
-        list[str]: Lista com os códigos de produto válidos encontrados.
+        list[dict]: Lista de itens {'codigo_produto', 'descricao_produto'}.
 
     Como funciona:
     - O script percorre todas as páginas do PDF.
     - Em cada página, tenta extrair tabelas.
-    - Para cada linha da tabela, pega o primeiro valor como possível código.
+    - Para cada linha da tabela, usa coluna 1 como código e coluna 2 como descrição.
     - Aplica filtros para remover cabeçalhos e textos fiscais.
     """
-    codigos = []
+    itens = []
+    itens_unicos = set()
 
     # Palavras comuns em cabeçalhos/campos fiscais que NÃO são código de produto.
     # Se o texto da coluna 1 tiver qualquer um desses termos, a linha é ignorada.
@@ -108,8 +136,12 @@ def extrair_dados_pdf(caminho_pdf):
                         if not linha_limpa:
                             continue
 
-                        # Regra principal: a primeira coluna da linha é tratada como código.
+                        # Regra principal: primeira coluna é código e segunda é descrição.
+                        if len(linha_limpa) < 2:
+                            continue
+
                         codigo = linha_limpa[0]
+                        descricao = linha_limpa[1]
 
                         # Filtro 1: remove cabeçalhos/textos fiscais conhecidos.
                         devera_ignorar = any(
@@ -117,19 +149,37 @@ def extrair_dados_pdf(caminho_pdf):
                         )
                         if devera_ignorar:
                             continue
+                        if any(termo in descricao.upper() for termo in termos_para_ignorar):
+                            continue
 
-                        # Filtro 2: valida formato do código.
-                        # - entre 4 e 18 caracteres
-                        # - não pode ser só números
-                        # Isso elimina textos longos e campos fiscais.
-                        if 4 <= len(codigo) <= 18 and not codigo.isdigit():
-                            print(f"      🔹 Código de produto encontrado: {codigo}")
-                            codigos.append(codigo)
+                        # Filtro 2: valida formato de código de produto.
+                        # Rejeita texto solto, códigos somente numéricos e dados fiscais.
+                        if not PADRAO_CODIGO_PRODUTO.match(codigo):
+                            continue
+                        if codigo.isdigit():
+                            continue
+                        if PADRAO_CNPJ_MASCARADO.match(codigo):
+                            continue
+                        if not descricao or len(descricao) < 3:
+                            continue
+
+                        chave_item = (codigo, descricao)
+                        if chave_item in itens_unicos:
+                            continue
+
+                        itens_unicos.add(chave_item)
+                        print(f"      🔹 Item encontrado: {codigo} | {descricao}")
+                        itens.append(
+                            {
+                                "codigo_produto": codigo,
+                                "descricao_produto": descricao,
+                            }
+                        )
     except Exception as e:
         # Se houver erro de leitura do PDF, apenas avisa e segue o fluxo.
         print(f"    ❌ Erro ao ler o PDF {os.path.basename(caminho_pdf)}: {e}")
 
-    return codigos
+    return itens
 
 
 def calcular_data_alvo():
@@ -223,16 +273,25 @@ def main():
                 caminho_completo_pdf = os.path.join(caminho_cliente, nome_pdf)
                 print(f"    📄 Lendo Nota Fiscal: {nome_pdf}")
 
-                codigos = extrair_dados_pdf(caminho_completo_pdf)
+                data_faturamento = f"{dia_str}/{data_alvo.strftime('%m')}/{ano_str}"
+                numero_nota = extrair_numero_nota_nome_arquivo(nome_pdf)
+                itens_nota = extrair_dados_pdf(caminho_completo_pdf)
 
-                # Cada código vira uma linha da planilha.
-                for cod in codigos:
+                if not itens_nota:
+                    print("    ⚠ Nenhum item de produto válido encontrado nesta NF.")
+                    print("-" * 60)
+                    continue
+
+                # Cada item vira uma linha da planilha.
+                for item in itens_nota:
                     dados_finais.append(
                         {
-                            "Data Faturamento": f"{dia_str}/{data_alvo.strftime('%m')}/{ano_str}",
+                            "Data Faturamento": data_faturamento,
                             "Cliente": cliente,
+                            "Número Nota": numero_nota,
                             "Arquivo NF": nome_pdf,
-                            "Código Produto": cod,
+                            "Código Produto": item["codigo_produto"],
+                            "Descrição Produto": item["descricao_produto"],
                         }
                     )
             else:
