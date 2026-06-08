@@ -1,4 +1,4 @@
-﻿# Conferência Automática de NF
+﻿﻿# Conferência Automática de NF
 
 Automação para conferência de faturamento com leitura de notas fiscais em PDF e extração de códigos de produto, gerando planilha Excel consolidada por dia.
 
