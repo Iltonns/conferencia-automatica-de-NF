@@ -48,3 +48,203 @@ CEST: 01.030.00
 2026-06-10 09:34:48,685 | INFO | Planilha gerada com sucesso: C:\Users\Dell\OneDrive\Documentos\GitHub\conferencia-automatica-de-NF\Conferencia_09_06_2026.xlsx
 2026-06-10 09:34:48,686 | INFO | Processo finalizado com sucesso.
 2026-06-10 09:34:48,686 | INFO | ================================================================================
+2026-06-10 10:07:35,887 | INFO | ================================================================================
+2026-06-10 10:07:35,889 | INFO | Iniciando conferência automática de faturamento
+2026-06-10 10:07:35,889 | INFO | Data de conferência: 09/06/2026
+2026-06-10 10:07:35,889 | INFO | Pasta acessada: G:\Drives compartilhados\TW_Faturamento\2026\FATURAMENTO - M30 SC\06 - JUNHO\09
+2026-06-10 10:07:35,936 | INFO | Pastas de clientes encontradas: 8
+2026-06-10 10:07:35,936 | INFO | ------------------------------------------------------------
+2026-06-10 10:07:35,937 | INFO | Cliente: 4552 - 50.201.544 JOAO CARLOS DE MEDEIROS
+2026-06-10 10:07:35,943 | INFO | Lendo Nota Fiscal: 42260630900388000229550010000045521628969823.pdf
+2026-06-10 10:07:36,148 | INFO |       Item encontrado: KS0445110273 | INJETOR CR IVECO DAILY DUCATO 2.3 KINGSTAR
+2026-06-10 10:07:36,152 | INFO | ------------------------------------------------------------
+2026-06-10 10:07:36,152 | INFO | Cliente: 4553 - TRIJET PARTS DIESEL LTDA
+2026-06-10 10:07:36,162 | INFO | Lendo Nota Fiscal: 42260630900388000229550010000045531640991440.pdf
+2026-06-10 10:07:36,350 | INFO |       Item encontrado: KS166000372R | INJETOR SIEMENS - FRONTIER 2.3 16V ANO 2017 A
+2023 KINGSTAR
+CEST: 01.030.00
+2026-06-10 10:07:36,353 | INFO | ------------------------------------------------------------
+2026-06-10 10:07:36,354 | INFO | Cliente: 4554 - DISLUBRI DISTRIBUIDOR AUTOMOTIVO LTDA
+2026-06-10 10:07:36,364 | INFO | Lendo Nota Fiscal: 42260630900388000229550010000045541437844125.pdf
+2026-06-10 10:07:36,541 | INFO |       Item encontrado: KSF00VC01502 | VALVULA BASTAO AMAROK 2.0 KINGSTAR
+CEST: 01.046.00
+2026-06-10 10:07:36,544 | INFO | ------------------------------------------------------------
+2026-06-10 10:07:36,544 | INFO | Cliente: 4555 - RD DIESEL LTDA
+2026-06-10 10:07:36,558 | INFO | Lendo Nota Fiscal: 42260630900388000229550010000045551278968850.pdf
+2026-06-10 10:07:36,769 | INFO |       Item encontrado: LD0950006250 | INJETOR CR NISSAN FRONTIER 2.5 EURO 4
+CEST: 01.030.00
+2026-06-10 10:07:36,774 | INFO | ------------------------------------------------------------
+2026-06-10 10:07:36,774 | INFO | Cliente: 4556 - A A DE SOUZA DISTRIBUIDORA E REPRESENTACOES
+2026-06-10 10:07:36,785 | INFO | Lendo Nota Fiscal: 42260630900388000229550010000045561294793462.pdf
+2026-06-10 10:07:36,988 | INFO |       Item encontrado: KS166000372R | INJETOR SIEMENS - FRONTIER 2.3 16V ANO 2017 A
+2023 KINGSTAR
+CEST: 01.030.00
+2026-06-10 10:07:36,992 | INFO | ------------------------------------------------------------
+2026-06-10 10:07:36,992 | INFO | Cliente: 4557- PONTELLO BOMBAS INJETORAS LTDA
+2026-06-10 10:07:37,003 | INFO | Lendo Nota Fiscal: 42260630900388000229550010000045571805652572.pdf
+2026-06-10 10:07:37,219 | INFO |       Item encontrado: KSF00VC01502 | VALVULA BASTAO AMAROK 2.0 KINGSTAR
+CEST: 01.046.00
+2026-06-10 10:07:37,219 | INFO |       Item encontrado: KS28277576 | VALVULA DE CONTROLE KIA BONGO HR 2.5 INJ 28229873
+CEST: 01.046.00
+2026-06-10 10:07:37,221 | INFO | ------------------------------------------------------------
+2026-06-10 10:07:37,221 | INFO | Cliente: 4559 - NELSON CARDOSO
+2026-06-10 10:07:37,230 | INFO | Lendo Nota Fiscal: 42260630900388000229550010000045591481558090.pdf
+2026-06-10 10:07:37,421 | INFO |       Item encontrado: KS0445110565 | INJETOR CR JUMPER EXPERT 1.6 KS
+2026-06-10 10:07:37,423 | INFO | ------------------------------------------------------------
+2026-06-10 10:07:37,423 | INFO | Cliente: 4558 - RW DIESEL LTDA
+2026-06-10 10:07:37,432 | INFO | Lendo Nota Fiscal: 42260630900388000229550010000045581762505716.pdf
+2026-06-10 10:07:37,623 | INFO |       Item encontrado: LD0445120231 | INJETOR CR KOMATSU PC200 6.7
+CEST: 01.030.00
+2026-06-10 10:07:38,142 | INFO | Planilha gerada com sucesso: C:\Users\Dell\OneDrive\Documentos\GitHub\conferencia-automatica-de-NF\Conferencia_09_06_2026.xlsx
+2026-06-10 10:07:38,142 | INFO | Processo finalizado com sucesso.
+2026-06-10 10:07:38,142 | INFO | ================================================================================
+2026-06-10 10:08:51,610 | INFO | ================================================================================
+2026-06-10 10:08:51,610 | INFO | Iniciando conferência automática de faturamento
+2026-06-10 10:08:51,610 | INFO | Data de conferência: 09/06/2026
+2026-06-10 10:08:51,611 | INFO | Pasta acessada: G:\Drives compartilhados\TW_Faturamento\2026\FATURAMENTO - M30 SC\06 - JUNHO\09
+2026-06-10 10:08:51,621 | INFO | Pastas de clientes encontradas: 8
+2026-06-10 10:08:51,621 | INFO | ------------------------------------------------------------
+2026-06-10 10:08:51,621 | INFO | Cliente: 4552 - 50.201.544 JOAO CARLOS DE MEDEIROS
+2026-06-10 10:08:51,625 | INFO | Lendo Nota Fiscal: 42260630900388000229550010000045521628969823.pdf
+2026-06-10 10:08:51,819 | INFO |       Item encontrado: KS0445110273 | INJETOR CR IVECO DAILY DUCATO 2.3 KINGSTAR
+2026-06-10 10:08:51,820 | INFO | ------------------------------------------------------------
+2026-06-10 10:08:51,821 | INFO | Cliente: 4553 - TRIJET PARTS DIESEL LTDA
+2026-06-10 10:08:51,827 | INFO | Lendo Nota Fiscal: 42260630900388000229550010000045531640991440.pdf
+2026-06-10 10:08:52,009 | INFO |       Item encontrado: KS166000372R | INJETOR SIEMENS - FRONTIER 2.3 16V ANO 2017 A
+2023 KINGSTAR
+CEST: 01.030.00
+2026-06-10 10:08:52,010 | INFO | ------------------------------------------------------------
+2026-06-10 10:08:52,010 | INFO | Cliente: 4554 - DISLUBRI DISTRIBUIDOR AUTOMOTIVO LTDA
+2026-06-10 10:08:52,023 | INFO | Lendo Nota Fiscal: 42260630900388000229550010000045541437844125.pdf
+2026-06-10 10:08:52,209 | INFO |       Item encontrado: KSF00VC01502 | VALVULA BASTAO AMAROK 2.0 KINGSTAR
+CEST: 01.046.00
+2026-06-10 10:08:52,210 | INFO | ------------------------------------------------------------
+2026-06-10 10:08:52,210 | INFO | Cliente: 4555 - RD DIESEL LTDA
+2026-06-10 10:08:52,223 | INFO | Lendo Nota Fiscal: 42260630900388000229550010000045551278968850.pdf
+2026-06-10 10:08:52,456 | INFO |       Item encontrado: LD0950006250 | INJETOR CR NISSAN FRONTIER 2.5 EURO 4
+CEST: 01.030.00
+2026-06-10 10:08:52,457 | INFO | ------------------------------------------------------------
+2026-06-10 10:08:52,457 | INFO | Cliente: 4556 - A A DE SOUZA DISTRIBUIDORA E REPRESENTACOES
+2026-06-10 10:08:52,465 | INFO | Lendo Nota Fiscal: 42260630900388000229550010000045561294793462.pdf
+2026-06-10 10:08:52,658 | INFO |       Item encontrado: KS166000372R | INJETOR SIEMENS - FRONTIER 2.3 16V ANO 2017 A
+2023 KINGSTAR
+CEST: 01.030.00
+2026-06-10 10:08:52,659 | INFO | ------------------------------------------------------------
+2026-06-10 10:08:52,660 | INFO | Cliente: 4557- PONTELLO BOMBAS INJETORAS LTDA
+2026-06-10 10:08:52,668 | INFO | Lendo Nota Fiscal: 42260630900388000229550010000045571805652572.pdf
+2026-06-10 10:08:52,880 | INFO |       Item encontrado: KSF00VC01502 | VALVULA BASTAO AMAROK 2.0 KINGSTAR
+CEST: 01.046.00
+2026-06-10 10:08:52,881 | INFO |       Item encontrado: KS28277576 | VALVULA DE CONTROLE KIA BONGO HR 2.5 INJ 28229873
+CEST: 01.046.00
+2026-06-10 10:08:52,882 | INFO | ------------------------------------------------------------
+2026-06-10 10:08:52,883 | INFO | Cliente: 4559 - NELSON CARDOSO
+2026-06-10 10:08:52,889 | INFO | Lendo Nota Fiscal: 42260630900388000229550010000045591481558090.pdf
+2026-06-10 10:08:53,080 | INFO |       Item encontrado: KS0445110565 | INJETOR CR JUMPER EXPERT 1.6 KS
+2026-06-10 10:08:53,081 | INFO | ------------------------------------------------------------
+2026-06-10 10:08:53,081 | INFO | Cliente: 4558 - RW DIESEL LTDA
+2026-06-10 10:08:53,092 | INFO | Lendo Nota Fiscal: 42260630900388000229550010000045581762505716.pdf
+2026-06-10 10:08:53,279 | INFO |       Item encontrado: LD0445120231 | INJETOR CR KOMATSU PC200 6.7
+CEST: 01.030.00
+2026-06-10 10:08:53,584 | INFO | Planilha gerada com sucesso: C:\Users\Dell\OneDrive\Documentos\GitHub\conferencia-automatica-de-NF\Conferencia_09_06_2026.xlsx
+2026-06-10 10:08:53,600 | INFO | Processo finalizado com sucesso.
+2026-06-10 10:08:53,601 | INFO | ================================================================================
+2026-06-10 10:10:04,928 | INFO | ================================================================================
+2026-06-10 10:10:04,929 | INFO | Iniciando conferência automática de faturamento
+2026-06-10 10:10:04,929 | INFO | Data de conferência: 09/06/2026
+2026-06-10 10:10:04,929 | INFO | Pasta acessada: G:\Drives compartilhados\TW_Faturamento\2026\FATURAMENTO - M30 SC\06 - JUNHO\09
+2026-06-10 10:10:04,939 | INFO | Pastas de clientes encontradas: 8
+2026-06-10 10:10:04,939 | INFO | ------------------------------------------------------------
+2026-06-10 10:10:04,939 | INFO | Cliente: 4552 - 50.201.544 JOAO CARLOS DE MEDEIROS
+2026-06-10 10:10:04,944 | INFO | Lendo Nota Fiscal: 42260630900388000229550010000045521628969823.pdf
+2026-06-10 10:10:05,146 | INFO |       Item encontrado: KS0445110273 | INJETOR CR IVECO DAILY DUCATO 2.3 KINGSTAR
+2026-06-10 10:10:05,147 | INFO | ------------------------------------------------------------
+2026-06-10 10:10:05,148 | INFO | Cliente: 4553 - TRIJET PARTS DIESEL LTDA
+2026-06-10 10:10:05,156 | INFO | Lendo Nota Fiscal: 42260630900388000229550010000045531640991440.pdf
+2026-06-10 10:10:05,351 | INFO |       Item encontrado: KS166000372R | INJETOR SIEMENS - FRONTIER 2.3 16V ANO 2017 A
+2023 KINGSTAR
+CEST: 01.030.00
+2026-06-10 10:10:05,353 | INFO | ------------------------------------------------------------
+2026-06-10 10:10:05,353 | INFO | Cliente: 4554 - DISLUBRI DISTRIBUIDOR AUTOMOTIVO LTDA
+2026-06-10 10:10:05,362 | INFO | Lendo Nota Fiscal: 42260630900388000229550010000045541437844125.pdf
+2026-06-10 10:10:05,541 | INFO |       Item encontrado: KSF00VC01502 | VALVULA BASTAO AMAROK 2.0 KINGSTAR
+CEST: 01.046.00
+2026-06-10 10:10:05,542 | INFO | ------------------------------------------------------------
+2026-06-10 10:10:05,543 | INFO | Cliente: 4555 - RD DIESEL LTDA
+2026-06-10 10:10:05,552 | INFO | Lendo Nota Fiscal: 42260630900388000229550010000045551278968850.pdf
+2026-06-10 10:10:05,767 | INFO |       Item encontrado: LD0950006250 | INJETOR CR NISSAN FRONTIER 2.5 EURO 4
+CEST: 01.030.00
+2026-06-10 10:10:05,768 | INFO | ------------------------------------------------------------
+2026-06-10 10:10:05,768 | INFO | Cliente: 4556 - A A DE SOUZA DISTRIBUIDORA E REPRESENTACOES
+2026-06-10 10:10:05,777 | INFO | Lendo Nota Fiscal: 42260630900388000229550010000045561294793462.pdf
+2026-06-10 10:10:05,965 | INFO |       Item encontrado: KS166000372R | INJETOR SIEMENS - FRONTIER 2.3 16V ANO 2017 A
+2023 KINGSTAR
+CEST: 01.030.00
+2026-06-10 10:10:05,967 | INFO | ------------------------------------------------------------
+2026-06-10 10:10:05,967 | INFO | Cliente: 4557- PONTELLO BOMBAS INJETORAS LTDA
+2026-06-10 10:10:05,977 | INFO | Lendo Nota Fiscal: 42260630900388000229550010000045571805652572.pdf
+2026-06-10 10:10:06,188 | INFO |       Item encontrado: KSF00VC01502 | VALVULA BASTAO AMAROK 2.0 KINGSTAR
+CEST: 01.046.00
+2026-06-10 10:10:06,188 | INFO |       Item encontrado: KS28277576 | VALVULA DE CONTROLE KIA BONGO HR 2.5 INJ 28229873
+CEST: 01.046.00
+2026-06-10 10:10:06,189 | INFO | ------------------------------------------------------------
+2026-06-10 10:10:06,189 | INFO | Cliente: 4559 - NELSON CARDOSO
+2026-06-10 10:10:06,194 | INFO | Lendo Nota Fiscal: 42260630900388000229550010000045591481558090.pdf
+2026-06-10 10:10:06,374 | INFO |       Item encontrado: KS0445110565 | INJETOR CR JUMPER EXPERT 1.6 KS
+2026-06-10 10:10:06,375 | INFO | ------------------------------------------------------------
+2026-06-10 10:10:06,376 | INFO | Cliente: 4558 - RW DIESEL LTDA
+2026-06-10 10:10:06,384 | INFO | Lendo Nota Fiscal: 42260630900388000229550010000045581762505716.pdf
+2026-06-10 10:10:06,580 | INFO |       Item encontrado: LD0445120231 | INJETOR CR KOMATSU PC200 6.7
+CEST: 01.030.00
+2026-06-10 10:10:06,934 | INFO | Planilha gerada com sucesso: C:\Users\Dell\OneDrive\Documentos\GitHub\conferencia-automatica-de-NF\Conferencia_09_06_2026.xlsx
+2026-06-10 10:10:06,936 | INFO | Processo finalizado com sucesso.
+2026-06-10 10:10:06,936 | INFO | ================================================================================
+2026-06-10 10:20:53,853 | INFO | ================================================================================
+2026-06-10 10:20:53,855 | INFO | Iniciando conferência automática de faturamento
+2026-06-10 10:20:53,855 | INFO | Data de conferência: 09/06/2026
+2026-06-10 10:20:53,855 | INFO | Pasta acessada: G:\Drives compartilhados\TW_Faturamento\2026\FATURAMENTO - M30 SC\06 - JUNHO\09
+2026-06-10 10:20:53,892 | INFO | Pastas de clientes encontradas: 8
+2026-06-10 10:20:53,892 | INFO | ------------------------------------------------------------
+2026-06-10 10:20:53,892 | INFO | Cliente: 4552 - 50.201.544 JOAO CARLOS DE MEDEIROS
+2026-06-10 10:20:53,899 | INFO | Lendo Nota Fiscal: 42260630900388000229550010000045521628969823.pdf
+2026-06-10 10:20:54,102 | INFO |       Item encontrado: KS0445110273 | INJETOR CR IVECO DAILY DUCATO 2.3 KINGSTAR
+2026-06-10 10:20:54,104 | INFO | ------------------------------------------------------------
+2026-06-10 10:20:54,104 | INFO | Cliente: 4553 - TRIJET PARTS DIESEL LTDA
+2026-06-10 10:20:54,111 | INFO | Lendo Nota Fiscal: 42260630900388000229550010000045531640991440.pdf
+2026-06-10 10:20:54,302 | INFO |       Item encontrado: KS166000372R | INJETOR SIEMENS - FRONTIER 2.3 16V ANO 2017 A
+2023 KINGSTAR
+CEST: 01.030.00
+2026-06-10 10:20:54,303 | INFO | ------------------------------------------------------------
+2026-06-10 10:20:54,303 | INFO | Cliente: 4554 - DISLUBRI DISTRIBUIDOR AUTOMOTIVO LTDA
+2026-06-10 10:20:54,316 | INFO | Lendo Nota Fiscal: 42260630900388000229550010000045541437844125.pdf
+2026-06-10 10:20:54,499 | INFO |       Item encontrado: KSF00VC01502 | VALVULA BASTAO AMAROK 2.0 KINGSTAR
+CEST: 01.046.00
+2026-06-10 10:20:54,501 | INFO | ------------------------------------------------------------
+2026-06-10 10:20:54,501 | INFO | Cliente: 4555 - RD DIESEL LTDA
+2026-06-10 10:20:54,515 | INFO | Lendo Nota Fiscal: 42260630900388000229550010000045551278968850.pdf
+2026-06-10 10:20:54,746 | INFO |       Item encontrado: LD0950006250 | INJETOR CR NISSAN FRONTIER 2.5 EURO 4
+CEST: 01.030.00
+2026-06-10 10:20:54,747 | INFO | ------------------------------------------------------------
+2026-06-10 10:20:54,748 | INFO | Cliente: 4556 - A A DE SOUZA DISTRIBUIDORA E REPRESENTACOES
+2026-06-10 10:20:54,760 | INFO | Lendo Nota Fiscal: 42260630900388000229550010000045561294793462.pdf
+2026-06-10 10:20:54,954 | INFO |       Item encontrado: KS166000372R | INJETOR SIEMENS - FRONTIER 2.3 16V ANO 2017 A
+2023 KINGSTAR
+CEST: 01.030.00
+2026-06-10 10:20:54,955 | INFO | ------------------------------------------------------------
+2026-06-10 10:20:54,956 | INFO | Cliente: 4557- PONTELLO BOMBAS INJETORAS LTDA
+2026-06-10 10:20:54,967 | INFO | Lendo Nota Fiscal: 42260630900388000229550010000045571805652572.pdf
+2026-06-10 10:20:55,199 | INFO |       Item encontrado: KSF00VC01502 | VALVULA BASTAO AMAROK 2.0 KINGSTAR
+CEST: 01.046.00
+2026-06-10 10:20:55,200 | INFO |       Item encontrado: KS28277576 | VALVULA DE CONTROLE KIA BONGO HR 2.5 INJ 28229873
+CEST: 01.046.00
+2026-06-10 10:20:55,201 | INFO | ------------------------------------------------------------
+2026-06-10 10:20:55,201 | INFO | Cliente: 4559 - NELSON CARDOSO
+2026-06-10 10:20:55,209 | INFO | Lendo Nota Fiscal: 42260630900388000229550010000045591481558090.pdf
+2026-06-10 10:20:55,412 | INFO |       Item encontrado: KS0445110565 | INJETOR CR JUMPER EXPERT 1.6 KS
+2026-06-10 10:20:55,413 | INFO | ------------------------------------------------------------
+2026-06-10 10:20:55,413 | INFO | Cliente: 4558 - RW DIESEL LTDA
+2026-06-10 10:20:55,424 | INFO | Lendo Nota Fiscal: 42260630900388000229550010000045581762505716.pdf
+2026-06-10 10:20:55,627 | INFO |       Item encontrado: LD0445120231 | INJETOR CR KOMATSU PC200 6.7
+CEST: 01.030.00
+2026-06-10 10:20:56,004 | INFO | Planilha gerada com sucesso: C:\Users\Dell\OneDrive\Documentos\GitHub\conferencia-automatica-de-NF\Conferencia_09_06_2026.xlsx
+2026-06-10 10:20:56,004 | INFO | Processo finalizado com sucesso.
+2026-06-10 10:20:56,004 | INFO | ================================================================================

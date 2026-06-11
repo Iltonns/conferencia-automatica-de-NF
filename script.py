@@ -117,6 +117,12 @@ TERMOS_PARA_IGNORAR = [
 # =========================
 
 def calcular_data_alvo() -> datetime.datetime:
+    """Calcula a data operacional que deve ser conferida na execução atual.
+
+    A automação roda em dias úteis. Na segunda-feira, a rotina precisa voltar
+    para sexta-feira; nos demais dias úteis, processa o faturamento do dia
+    anterior.
+    """
     hoje = datetime.datetime.now()
 
     if hoje.weekday() == 0:
@@ -126,6 +132,7 @@ def calcular_data_alvo() -> datetime.datetime:
 
 
 def obter_nome_mes_ptbr(data: datetime.datetime) -> str:
+    """Retorna o nome do mês em português usado na estrutura de pastas."""
     meses = {
         1: "JANEIRO",
         2: "FEVEREIRO",
@@ -145,16 +152,25 @@ def obter_nome_mes_ptbr(data: datetime.datetime) -> str:
 
 
 def eh_boleto(nome_arquivo: str) -> bool:
+    """Identifica se o nome do arquivo PDF representa boleto/cobrança."""
     nome = Path(nome_arquivo).stem.lower()
     return any(marcador in nome for marcador in MARCADORES_BOLETO)
 
 
 def selecionar_pdf_nota_fiscal(arquivos_pdf: list[str]) -> str | None:
+    """Seleciona o PDF mais provável de ser a Nota Fiscal dentro da pasta.
+
+    Prioridade:
+    1. Arquivo cujo nome contenha chave NFe de 44 dígitos.
+    2. Primeiro PDF que não pareça boleto/cobrança.
+    3. Primeiro PDF em ordem alfabética como fallback operacional.
+    """
     if not arquivos_pdf:
         return None
 
     pdfs_ordenados = sorted(arquivos_pdf, key=str.lower)
 
+    # Chave NFe no nome é o sinal mais confiável para diferenciar NF de anexos.
     candidatos_chave_nfe = [
         arq
         for arq in pdfs_ordenados
@@ -175,12 +191,19 @@ def selecionar_pdf_nota_fiscal(arquivos_pdf: list[str]) -> str | None:
 
 
 def extrair_chave_nfe(nome_arquivo: str) -> str | None:
+    """Extrai a chave NFe de 44 dígitos presente no nome do arquivo."""
     base = Path(nome_arquivo).stem
     match = REGEX_CHAVE_NFE.search(base)
     return match.group(0) if match else None
 
 
 def extrair_numero_nota_nome_arquivo(nome_arquivo: str) -> str | None:
+    """Obtém o número da NF a partir do padrão do nome do arquivo.
+
+    A função suporta nomes com `doc_<numero>` e nomes baseados na chave NFe.
+    Quando a chave existe, o número da nota é extraído das posições oficiais
+    da chave de acesso.
+    """
     base = Path(nome_arquivo).stem
 
     match_doc = re.search(r"doc_(\d+)", base, re.IGNORECASE)
@@ -201,6 +224,7 @@ def extrair_numero_nota_nome_arquivo(nome_arquivo: str) -> str | None:
 
 
 def codigo_ou_descricao_deve_ignorar(codigo: str, descricao: str) -> bool:
+    """Valida se código ou descrição pertencem a blocos fiscais irrelevantes."""
     codigo_upper = codigo.upper()
     descricao_upper = descricao.upper()
 
@@ -214,6 +238,7 @@ def codigo_ou_descricao_deve_ignorar(codigo: str, descricao: str) -> bool:
 
 
 def codigo_produto_valido(codigo: str, descricao: str) -> bool:
+    """Confirma se o par código/descrição possui formato de item de produto."""
     if not PADRAO_CODIGO_PRODUTO.match(codigo):
         return False
 
@@ -230,6 +255,13 @@ def codigo_produto_valido(codigo: str, descricao: str) -> bool:
 
 
 def extrair_dados_pdf(caminho_pdf: Path) -> list[dict]:
+    """Extrai itens de produto das tabelas do PDF da Nota Fiscal.
+
+    A extração trabalha com tabelas detectadas pelo `pdfplumber` e considera
+    as duas primeiras colunas limpas como código e descrição. Os filtros
+    removem cabeçalhos, textos fiscais, CNPJs mascarados, códigos numéricos
+    puros e duplicidades dentro do mesmo PDF.
+    """
     itens = []
     itens_unicos = set()
 
@@ -252,6 +284,7 @@ def extrair_dados_pdf(caminho_pdf: Path) -> list[dict]:
                         if len(linha_limpa) < 2:
                             continue
 
+                        # Layouts de NF costumam posicionar código e descrição nas primeiras colunas.
                         codigo = linha_limpa[0]
                         descricao = linha_limpa[1]
 
@@ -263,6 +296,7 @@ def extrair_dados_pdf(caminho_pdf: Path) -> list[dict]:
 
                         chave_item = (codigo, descricao)
 
+                        # Evita repetir o mesmo item quando o parser encontra a tabela mais de uma vez.
                         if chave_item in itens_unicos:
                             continue
 
@@ -286,6 +320,7 @@ def extrair_dados_pdf(caminho_pdf: Path) -> list[dict]:
 
 
 def montar_caminho_dia(data_alvo: datetime.datetime) -> Path:
+    """Monta o caminho da pasta diária de faturamento conforme padrão M30."""
     mes_str = f"{data_alvo.strftime('%m')} - {obter_nome_mes_ptbr(data_alvo)}"
     dia_str = data_alvo.strftime("%d")
 
@@ -293,6 +328,11 @@ def montar_caminho_dia(data_alvo: datetime.datetime) -> Path:
 
 
 def salvar_excel(dados_finais: list[dict], data_alvo: datetime.datetime) -> Path | None:
+    """Gera a planilha final de conferência e retorna o caminho criado.
+
+    Caso o arquivo padrão esteja aberto no Excel, cria uma versão alternativa
+    com timestamp para preservar a execução automática sem intervenção manual.
+    """
     if not dados_finais:
         logging.warning("Processo concluído, mas nenhum código válido foi extraído.")
         return None
@@ -312,7 +352,8 @@ def salvar_excel(dados_finais: list[dict], data_alvo: datetime.datetime) -> Path
         return caminho_excel
 
     except PermissionError:
-        nome_alternativo = f"Conferencia_{dia}_{mes}_{ano}_{datetime.datetime.now().strftime('%H%M%S')}.xlsx"
+        timestamp = datetime.datetime.now().strftime("%H%M%S")
+        nome_alternativo = f"Conferencia_{dia}_{mes}_{ano}_{timestamp}.xlsx"
         caminho_alternativo = PASTA_SAIDA / nome_alternativo
 
         df.to_excel(caminho_alternativo, index=False)
@@ -325,6 +366,16 @@ def salvar_excel(dados_finais: list[dict], data_alvo: datetime.datetime) -> Path
 
 
 def processar_conferencia() -> None:
+    """Orquestra o processo completo de conferência automática.
+
+    Fluxo principal:
+    - calcula a data operacional;
+    - localiza a pasta diária no drive de faturamento;
+    - percorre as pastas de clientes;
+    - seleciona o PDF de NF;
+    - extrai itens válidos;
+    - exporta a planilha consolidada.
+    """
     logging.info("=" * 80)
     logging.info("Iniciando conferência automática de faturamento")
 
